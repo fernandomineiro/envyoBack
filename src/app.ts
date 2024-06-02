@@ -25,7 +25,7 @@ app.set("queues", {
 app.use(
   cors({
     credentials: true,
-    origin: '195.200.0.23:3000'
+    origin: 'http://195.200.0.23:3000'
   })
 );
 app.use(cookieParser());
