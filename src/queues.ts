@@ -33,9 +33,9 @@ import { ClosedAllOpenTickets } from "./services/WbotServices/wbotClosedTickets"
 const nodemailer = require('nodemailer');
 const CronJob = require('cron').CronJob;
 
-const connection = process.env.REDIS_URI || "rediss://default:AVNS__Y43NFlG-GLe9O3DEZk@caching-249fee72-inovavc-02c9.f.aivencloud.com:11640";
-const limiterMax = process.env.REDIS_OPT_LIMITER_MAX || 1;
-const limiterDuration = process.env.REDIS_OPT_LIMITER_DURATION || 3000;
+const connection = "rediss://default:AVNS__Y43NFlG-GLe9O3DEZk@caching-249fee72-inovavc-02c9.f.aivencloud.com:11640";
+const limiterMax = 1;
+const limiterDuration = 3000;
 
 interface ProcessCampaignData {
   id: number;
