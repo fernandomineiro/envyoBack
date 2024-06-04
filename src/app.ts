@@ -22,12 +22,28 @@ app.set("queues", {
   sendScheduledMessages
 });
 
-app.use(
-  cors({
-    credentials: true,
-    origin: ['http://195.200.0.23:3000', 'https://envyo.com.br']
-  })
-);
+const allowedOrigins = [
+    'http://195.200.0.23:3000',
+    'https://envyo.com.br'
+];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+};
+app.use(cors(corsOptions));
+
+//app.use(
+ // cors({
+  //  credentials: true,
+  //  origin: allowedOrigins
+//  })
+//);
 app.use(cookieParser());
 app.use(express.json());
 app.use(Sentry.Handlers.requestHandler());
